@@ -73,6 +73,8 @@
 
 @utility type-label {
   font-family: var(--font-sans);
+  font-stretch: 100%;
+  font-variation-settings: normal;
   font-size: var(--text-label);
   line-height: var(--text-label--line-height);
   font-weight: 600;
