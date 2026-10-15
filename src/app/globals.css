@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+/*
+ * Ssixteen design tokens.
+ * Grounded in the EVOKE reference: ink on a white canvas, flat full-bleed
+ * colour panels, heavy condensed display type, 0 radius, no shadows.
+ * Every service colour carries ink text only (all ≥ 7:1 contrast).
+ */
+@theme {
+  /* Colour — roles are fixed: service colours mark their service, ink is for
+     text, rules and inverted UI, never a filled CTA colour. */
+  --color-*: initial;
+  --color-ink: #000000;
+  --color-canvas: #ffffff;
+  --color-fog: #ededf0;
+  --color-social: #ff5fcf;
+  --color-events: #ff7a1a;
+  --color-seo: #5b9bff;
+  --color-brand: #c8f53c;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Shape — sharp edges only. Radius and shadow scales are removed so they
+     cannot creep back in. */
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+  --blur-*: initial;
+
+  /* Type — Archivo in two roles: extra-condensed black for display,
+     normal width for text. */
+  --font-*: initial;
+  --font-sans: var(--font-archivo), "Arial Narrow", Arial, sans-serif;
+  --font-display: var(--font-archivo), "Arial Narrow", Impact, sans-serif;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.5;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.45;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.2;
+  --text-lead: clamp(1.125rem, 0.9rem + 0.7vw, 1.5rem);
+  --text-lead--line-height: 1.35;
+  --text-d3: clamp(1.75rem, 1.2rem + 1.8vw, 3rem);
+  --text-d3--line-height: 0.9;
+  --text-d2: clamp(3rem, 1.6rem + 5vw, 6.5rem);
+  --text-d2--line-height: 0.86;
+  --text-d1: clamp(3.5rem, 0.6rem + 10.5vw, 11rem);
+  --text-d1--line-height: 0.84;
+
+  /* Space — EVOKE rhythm (64 section / 21 card / 20 element), scaled up for
+     poster-size type on large screens. */
+  --spacing-gutter: clamp(1.25rem, 0.8rem + 1.6vw, 2rem);
+  --spacing-section: clamp(4rem, 2rem + 6vw, 8rem);
+  --spacing-card: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  --spacing-el: 1.25rem;
+
+  --ease-snap: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  /* The condensed cut has a very narrow space; keep words distinct. */
+  word-spacing: 0.08em;
+}
+
+@utility type-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Fits "SSIXTEEN" to the full width of its container (needs an @container
+   parent). The factor is measured from the rendered glyphs. */
+@utility wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-variation-settings: "wdth" 62;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  font-size: calc(100cqw * 0.2875);
+  line-height: 0.76;
+  white-space: nowrap;
+}
+
+/* Rules between grid cells: an ink background showing through 2px gaps. */
+@utility ruled-grid {
+  background-color: var(--color-ink);
+  gap: 2px;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  .on-ink :focus-visible {
+    outline-color: var(--color-canvas);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
