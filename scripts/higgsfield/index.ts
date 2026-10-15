@@ -74,6 +74,9 @@ if (!keyId || !keySecret || rest.length > 0) {
 
 const client = createHiggsfieldClient({
   credentials,
+  // Some keys are accepted via these headers but get 401 from the v2
+  // "Authorization: Key" header alone, so send both.
+  headers: { "hf-api-key": keyId, "hf-secret": keySecret },
   // The submit is billable: never resend it automatically.
   maxRetries: 0,
   pollInterval: 5000,
