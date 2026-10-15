@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { site } from "@/content/site";
 import { ButtonLink } from "./ButtonLink";
 import { MobileMenu } from "./MobileMenu";
+import { NavLinks, NavList } from "./NavLinks";
 
 export function Header() {
   return (
@@ -12,18 +14,9 @@ export function Header() {
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-8">
-            {site.nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="type-label inline-flex min-h-11 items-center decoration-2 underline-offset-[6px] hover:underline"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Suspense fallback={<NavList />}>
+            <NavLinks />
+          </Suspense>
         </nav>
 
         <div className="flex items-center gap-3">

@@ -13,6 +13,7 @@ export type Service = {
   included: string[];
   outcomes: { value: string; label: string }[];
   illustration: { note: string; alt: string };
+  photo: { note: string; alt: string };
 };
 
 export const services: Service[] = [
@@ -41,6 +42,10 @@ export const services: Service[] = [
       note: "Flat geometric illustration: stacked speech-bubble squares and a phone frame, pink and black only.",
       alt: "Illustration of stacked speech bubbles around a phone",
     },
+    photo: {
+      note: "4:5, creator filming a reel for a client on a phone gimbal, daylight street, candid.",
+      alt: "Creator filming a social video on a phone",
+    },
   },
   {
     id: "events",
@@ -66,6 +71,10 @@ export const services: Service[] = [
     illustration: {
       note: "Flat geometric illustration: spotlight cone over stacked stage blocks, orange and black only.",
       alt: "Illustration of a spotlight shining on a stage",
+    },
+    photo: {
+      note: "4:5, crew setting up stage lights before doors open, warm work lights, candid.",
+      alt: "Crew setting up stage lights",
     },
   },
   {
@@ -93,6 +102,10 @@ export const services: Service[] = [
       note: "Flat geometric illustration: rising bar stack with a magnifier ring, blue and black only.",
       alt: "Illustration of rising bars under a magnifying glass",
     },
+    photo: {
+      note: "4:5, strategist pointing at a keyword map on a big screen, daylight office.",
+      alt: "Strategist presenting a keyword map",
+    },
   },
   {
     id: "brand",
@@ -118,6 +131,10 @@ export const services: Service[] = [
     illustration: {
       note: "Flat geometric illustration: interlocking letterform shapes, lime and black only.",
       alt: "Illustration of interlocking letter shapes",
+    },
+    photo: {
+      note: "4:5, designer laying out logo sketches and colour swatches on a table, overhead light.",
+      alt: "Designer laying out logo sketches",
     },
   },
 ];

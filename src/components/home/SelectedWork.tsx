@@ -1,7 +1,7 @@
 import { ButtonLink } from "@/components/ButtonLink";
 import { SectionHeading } from "@/components/SectionHeading";
 import { WorkCard } from "@/components/WorkCard";
-import { work } from "@/content/work";
+import { featuredWork } from "@/content/work";
 
 export function SelectedWork() {
   return (
@@ -13,7 +13,7 @@ export function SelectedWork() {
         action={<ButtonLink href="/work">All work</ButtonLink>}
       />
       <div className="mt-12 grid gap-x-el gap-y-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
-        {work.map((item) => (
+        {featuredWork.map((item) => (
           <WorkCard key={item.slug} item={item} />
         ))}
       </div>
