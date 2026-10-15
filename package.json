@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "higgsfield:example": "node --env-file-if-exists=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/higgsfield/index.ts"
   },
   "dependencies": {
+    "@higgsfield/client": "^0.2.6",
     "next": "16.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0"

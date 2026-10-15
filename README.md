@@ -28,3 +28,17 @@ The direction is grounded in the EVOKE reference: heavy condensed poster type, a
 All copy is in `src/content/*.ts`. Anything in `[brackets]`, every case study, client logo slot and testimonial is placeholder content to replace before launch.
 
 Images are `ArtSlot` placeholders (`src/components/ArtSlot.tsx`) with the correct aspect ratio, alt text and an art-direction note. Swap each for `next/image` with the same ratio and alt.
+
+## Higgsfield (image and video generation)
+
+The official SDK (`@higgsfield/client`, v2 client) is installed for generating site imagery and video.
+
+1. Copy `.env.example` to `.env.local` (git-ignored) and set `HF_CREDENTIALS=key-id:key-secret`.
+   The credential is server-side only: it has no `NEXT_PUBLIC_` prefix, so Next.js never sends it to the browser.
+2. Run the Seedance 2.5 example (a **billable** request):
+
+```bash
+npm run higgsfield:example
+```
+
+`scripts/higgsfield/index.ts` calls `subscribe("bytedance/seedance-2.5/text-to-video")` with a 5s, 720p, 16:9 prompt, waits for completion and prints the video URL. It exits non-zero on failed, moderated (`nsfw`) or canceled requests, and it never retries the billable submit.
